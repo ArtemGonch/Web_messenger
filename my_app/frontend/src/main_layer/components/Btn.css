@@ -1,0 +1,41 @@
+.btnleft {
+    position: absolute;
+    z-index: 2;
+    font-size: 4em;
+    background: none;
+    border: none;
+    top: 240px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 150px;
+    left: 13.4%;
+    scale: 0.8;
+}
+
+.btnright {
+    position: absolute;
+    z-index: 2;
+    font-size: 4em;
+    background: none;
+    border: none;
+    top: 240px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 150px;
+    right: 15.88%;
+    scale: 0.8;
+}
+
+.btnright:hover,
+.btnright:focus,
+.btnleft:hover,
+.btnleft:focus {
+    color: rgb(113, 113, 247);
+    background-color: rgba(0, 0, 0, 0.2);
+}

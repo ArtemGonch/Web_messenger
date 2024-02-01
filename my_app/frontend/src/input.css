@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.advimg{
+    margin-top: 100px;
+    padding: 0px;
+}
+.advimg>img{
+    height: 900px;
+}
