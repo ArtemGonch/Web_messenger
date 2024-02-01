@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:      
+  backend:
+    volumes:
+      - ./backend:/backend
+      - django_static:/backend/build
+      - media:/backend/media
+    # env_file:
+    #   - ./configs/production/.env.backend
+    #   - ./configs/production/.env.postgres
+    # environment:
+    #   - DJANGO_ENV=${DJANGO_ENV}
+    #   - REACT_APP_HOST_IP_ADDRESS=${IP_ADDRESS}
+    #   - DNS_NAME=${DNS_NAME}
+    build:
+      context: ./backend
+    ports:
+      - 8000:8000
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - REACT_APP_HOST_IP_ADDRESS=${IP_ADDRESS}
+      - REACT_APP_BACKEND_PORT=${BACKEND_PORT}
+    volumes:
+      # - ./frontend:/frontend
+      - react_static:/frontend/build
+
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - django_static:/var/www/frontend/django_static
+      - react_static:/var/www/frontend/react_static
+      - media:/data/web/media/
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  db_data: 
+  django_static:
+  media:
+  react_static:
